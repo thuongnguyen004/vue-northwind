@@ -17,6 +17,6 @@
 </template>
 
 <script setup>
-import Header from '../Header.vue';
-import ContentLeft from '../ContentLeft.vue';
+import Header from './Header.vue';
+import ContentLeft from './ContentLeft.vue';
 </script>

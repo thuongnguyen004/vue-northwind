@@ -1,6 +1,6 @@
 <template>
     <div class="flex items-center">
-        <img class="w-12.5 h-12.5 mr-2.5" src="../assets/img/northwind.png" alt="Northwind" />
+        <img class="w-12.5 h-12.5 mr-2.5" src="../../assets/img/northwind.png" alt="Northwind" />
         <h3 class="text-xl font-semibold">Northwind</h3>
     </div>
 

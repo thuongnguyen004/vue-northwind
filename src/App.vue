@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MainLayout />
+    <LoginView />
   </div>
 </template>
 
