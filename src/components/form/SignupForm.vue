@@ -1,29 +1,39 @@
 <script setup>
 import { ref, watch } from 'vue';
-import { validateLogin } from '@/assets/js/validateLogin';
+import { validateSignup } from '@/assets/js/validateSignup.js';
 import BaseInput from '../input/BaseInput.vue';
 import BaseButton from '../button/BaseButton.vue';
+const fullName = ref("");
 const email = ref("");
 const password = ref("");
-const remember = ref(false);
+const confirmPassword = ref("");
 const errors = ref({});
 
+watch(fullName, () => {
+    errors.value.fullName = "";
+})
 watch(email, () => {
     errors.value.email = "";
 })
 watch(password, () => {
     errors.value.password = "";
 })
+watch(confirmPassword, () => {
+    errors.value.confirmPassword = "";
+})
 const handleSubmit = () => {
 
-    const rs = validateLogin({
+    const rs = validateSignup({
+        fullName: fullName.value,
         email: email.value,
-        password: password.value
+        password: password.value,
+        confirmPassword: confirmPassword.value,
     });
 
-
+    errors.value.fullName = rs.fullName || "";
     errors.value.email = rs.email || "";
     errors.value.password = rs.password || "";
+    errors.value.confirmPassword = rs.confirmPassword || "";
 
     if (Object.keys(rs).length === 0) {
         alert("Sign in successfully!");
@@ -50,24 +60,26 @@ const handleSubmit = () => {
             <span class="text-[#6b7280] text-[14px]">or sign in with email</span>
             <hr class="flex-1 border-t border-t-[#e5e7eb]" />
         </div>
+        <BaseInput v-model="fullName" label="FullName:" type="text" placeholder="Enter your fullname"
+            :error="errors.fullName" />
         <BaseInput v-model="email" label="Email:" type="email" placeholder="Enter your email" :error="errors.email" />
         <BaseInput v-model="password" label="Password:" type="password" placeholder="Enter your password"
             :error="errors.password" />
+        <BaseInput v-model="confirmPassword" label="Confirm Password:" type="password" placeholder="Enter your password"
+            :error="errors.confirmPassword" />
 
-        <div class="flex justify-between">
-            <div>
-                <input v-model="remember" type="checkbox" />
-                <label for="">Remember me</label>
-            </div>
-            <a href="" class="no-underline text-[#5046E5]">Forgot password?</a>
+        <div class="flex text-center">
+            <p>
+                I agree to the <a href="" class="no-underline text-[#5046E5]">Terms of Service</a> and
+                <a href="" class="no-underline text-[#5046E5]">Privacy Policy</a>
+            </p>
         </div>
-
-        <BaseButton type="submit" text="Sign in" />
+        <BaseButton type="submit" text="Sign up" />
 
         <div class="text-center ">
             <p>
                 Don't have an account?<a href="../RegisterPage/register.html" class="no-underline text-[#5046E5]">
-                    Sign in</a>
+                    Sign up</a>
             </p>
         </div>
     </form>
