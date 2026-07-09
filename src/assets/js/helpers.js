@@ -25,8 +25,8 @@ export const validatePassword = (password, errors) => {
 
 export const validateConfirmPassword = (password, confirmPassword, errors) => {
   if (!confirmPassword.trim()) {
-    errors.password = "ConfirmPassword is required";
+    errors.confirmPassword = "ConfirmPassword is required";
   } else if (confirmPassword != password) {
-    errors.password = "Password does not match";
+    errors.confirmPassword = "Password does not match";
   }
 };
