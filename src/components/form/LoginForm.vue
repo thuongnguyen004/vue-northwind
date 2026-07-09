@@ -35,7 +35,7 @@ const handleSubmit = () => {
         <h2 class="text-3xl leading-tight">Welcome back</h2>
         <p class=" text-[#6B7280]">Sign in to continue to your workspace.</p>
 
-        <div class="flex gap-2">
+        <div class="flex justify-between gap-2">
             <button class="p-2.5 flex items-center border border-[#E5E7EB] rounded-[10px] border-double" type="button">
                 <img class="w-7.5 h-7.5" src="../../assets/img/gg.png" alt="" />Continue with Google
             </button>

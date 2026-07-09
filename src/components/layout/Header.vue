@@ -9,12 +9,13 @@ const toggleMenu = () => {
 };
 </script>
 <template>
-    <header class="bg-[#ffffff] h-fit">
+    <header class="bg-[#ffffff] h-fit max-[760px]:absolute w-full">
         <button @click="toggleMenu" class="hidden max-[760px]:block p-4">
             <i class="fa-solid fa-bars text-[#5046E5]"></i>
         </button>
 
-        <nav :class="isOpen ? 'block' : 'max-[760px]:hidden'">
+        <nav class="overflow-hidden transition-all duration-300
+         min-[761px]:block" :class="isOpen ? 'max-h-96' : 'max-[760px]:max-h-0'">
             <ul class="flex max-[760px]:flex-col">
 
                 <li class="p-0 list-none flex items-center justify-center">

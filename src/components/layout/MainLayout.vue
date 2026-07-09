@@ -3,7 +3,7 @@
         <Header />
 
         <main class="p-10 justify-items-center">
-            <div class="flex justify-center w-fit min-h-150">
+            <div class="flex justify-center w-fit min-h-150 max-[760px]:mt-10">
 
                 <div
                     class="w-2/5 relative rounded-l-[10px] bg-linear-to-r from-[#6C63FF] via-[#4F46E5] to-[#7C6AF7] text-white p-12.5 flex flex-col justify-between max-[760px]:hidden">

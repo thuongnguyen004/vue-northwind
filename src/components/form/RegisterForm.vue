@@ -46,12 +46,16 @@ const handleSubmit = () => {
         <h2 class="text-3xl leading-tight">Welcome back</h2>
         <p class=" text-[#6B7280]">Sign in to continue to your workspace.</p>
 
-        <div class="flex gap-2">
-            <button class="p-2.5 flex items-center border border-[#E5E7EB] rounded-[10px] border-double" type="button">
-                <img class="w-7.5 h-7.5" src="../../assets/img/gg.png" alt="" />Continue with Google
+        <div class="flex justify-between gap-2">
+            <button
+                class="p-2.5 w-1/2 flex gap-2 items-center justify-center border border-[#E5E7EB] rounded-[10px] border-double"
+                type="button">
+                <img class="w-7.5 h-7.5" src="../../assets/img/gg.png" alt="" />Google
             </button>
-            <button class="p-2.5 flex items-center border border-[#E5E7EB] rounded-[10px] border-double" type="button">
-                <img class="w-7.5 h-7.5" src="../../assets/img/git.png" alt="" />Continue with Github
+            <button
+                class="p-2.5 w-1/2 flex gap-2 items-center justify-center border border-[#E5E7EB] rounded-[10px] border-double"
+                type="button">
+                <img class="w-7.5 h-7.5" src="../../assets/img/git.png" alt="" />Github
             </button>
         </div>
 
