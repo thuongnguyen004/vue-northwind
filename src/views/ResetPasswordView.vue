@@ -1,11 +1,11 @@
 <template>
     <MainLayout>
-        <RegisterForm />
+        <ResetPasswordForm />
     </MainLayout>
 
 </template>
 
 <script setup>
 import MainLayout from '@/components/layout/MainLayout.vue';
-import RegisterForm from '@/components/form/RegisterForm.vue';
+import ResetPasswordForm from '@/components/form/ResetPasswordForm.vue';
 </script>

@@ -1,11 +1,11 @@
 <template>
     <MainLayout>
-        <SigninForm />
+        <LoginForm />
     </MainLayout>
 
 </template>
 
 <script setup>
+import LoginForm from '@/components/form/LoginForm.vue';
 import MainLayout from '@/components/layout/MainLayout.vue';
-import SigninForm from '@/components/form/SigninForm.vue';
 </script>

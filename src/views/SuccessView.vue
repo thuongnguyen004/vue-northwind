@@ -1,11 +1,11 @@
 <template>
     <MainLayout>
-        <RegisterForm />
+        <SuccessForm />
     </MainLayout>
 
 </template>
 
 <script setup>
 import MainLayout from '@/components/layout/MainLayout.vue';
-import RegisterForm from '@/components/form/RegisterForm.vue';
+import SuccessForm from '@/components/form/SuccessForm.vue';
 </script>

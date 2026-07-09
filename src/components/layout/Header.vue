@@ -16,29 +16,34 @@ const toggleMenu = () => {
 
         <nav :class="isOpen ? 'block' : 'max-[760px]:hidden'">
             <ul class="flex max-[760px]:flex-col">
+
                 <li class="p-0 list-none flex items-center justify-center">
-                    <RouterLink to="/"
+                    <RouterLink to="/login"
                         class="p-2.5 no-underline text-[#6B7280] hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
                         href="">1.
                         Login</RouterLink>
                 </li>
+
                 <li class="p-0 list-none flex items-center justify-center">
                     <RouterLink to="/register"
                         class="p-2.5 no-underline text-[#6B7280]  hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
                         href="">2. Register</RouterLink>
                 </li>
+
                 <li class="p-0 list-none flex items-center justify-center">
-                    <RouterLink to="/"
+                    <RouterLink to="/forgot-pass"
                         class="p-2.5 no-underline text-[#6B7280] hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
                         href="">3. Forgot password</RouterLink>
                 </li>
+
                 <li class="p-0 list-none flex items-center justify-center">
-                    <RouterLink to="/"
+                    <RouterLink to="/reset-pass"
                         class="p-2.5 no-underline text-[#6B7280] hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
                         href="">4. Reset password</RouterLink>
                 </li>
+
                 <li class="p-0 list-none flex items-center justify-center">
-                    <RouterLink to="/"
+                    <RouterLink to="/success"
                         class="p-2.5 no-underline text-[#6B7280] hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
                         href="">5. Success</RouterLink>
                 </li>
