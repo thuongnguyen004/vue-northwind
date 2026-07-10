@@ -4,26 +4,23 @@ import BaseInput from '../input/BaseInput.vue';
 import BaseButton from '../button/BaseButton.vue';
 import { validateResetPass } from '@/assets/js/validateResetPass.js';
 
-const password = ref("");
-const confirmPassword = ref("");
+const form = ref({
+    password: "",
+    confirmPassword: "",
+});
 const errors = ref({});
 
-watch(password, () => {
+watch(() => form.value.password, () => {
     errors.value.password = "";
 })
-watch(confirmPassword, () => {
+watch(() => form.value.confirmPassword, () => {
     errors.value.confirmPassword = "";
 })
 
 const handleSubmit = () => {
 
-    const rs = validateResetPass({
-        password: password.value,
-        confirmPassword: confirmPassword.value,
-    });
-
-    errors.value.password = rs.password || "";
-    errors.value.confirmPassword = rs.confirmPassword || "";
+    const rs = validateResetPass(form.value);
+    errors.value = rs;
 
     if (Object.keys(rs).length === 0) {
         alert("Reset password successfully!");
@@ -39,11 +36,11 @@ const handleSubmit = () => {
             Choose a strong password you haven't used before. It must be at
             least 8 characters.
         </p>
-        <BaseInput v-model="password" label="Password:" type="password" placeholder="Enter your password"
+        <BaseInput v-model="form.password" label="Password:" type="password" placeholder="Enter your password"
             :error="errors.password" />
 
-        <BaseInput v-model="confirmPassword" label="Confirm Password:" type="password" placeholder="Enter your password"
-            :error="errors.confirmPassword" />
+        <BaseInput v-model="form.confirmPassword" label="Confirm Password:" type="password"
+            placeholder="Enter your password" :error="errors.confirmPassword" />
 
         <BaseButton type="submit" text="Update password" />
 

@@ -4,20 +4,19 @@ import BaseInput from '../input/BaseInput.vue';
 import BaseButton from '../button/BaseButton.vue';
 import { validateForgotPass } from '@/assets/js/validateForgotPass.js';
 
-const email = ref("");
+const form = ref({
+    email: "",
+});
 const errors = ref({});
 
-watch(email, () => {
+watch(() => form.value.email, () => {
     errors.value.email = "";
 })
 
 const handleSubmit = () => {
 
-    const rs = validateForgotPass({
-        email: email.value,
-    });
-
-    errors.value.email = rs.email || "";
+    const rs = validateForgotPass(form.value);
+    errors.value = rs;
 
     if (Object.keys(rs).length === 0) {
         alert("Send reset link successfully!");
@@ -35,7 +34,8 @@ const handleSubmit = () => {
             you a reset link.
         </p>
 
-        <BaseInput v-model="email" label="Email:" type="email" placeholder="Enter your email" :error="errors.email" />
+        <BaseInput v-model="form.email" label="Email:" type="email" placeholder="Enter your email"
+            :error="errors.email" />
 
         <BaseButton type="submit" text="Send reset link" />
 

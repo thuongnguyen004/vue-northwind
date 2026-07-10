@@ -3,26 +3,25 @@ import { ref, watch } from 'vue';
 import { validateLogin } from '@/assets/js/validateLogin';
 import BaseInput from '../input/BaseInput.vue';
 import BaseButton from '../button/BaseButton.vue';
-const email = ref("");
-const password = ref("");
-const remember = ref(false);
+import ImageButton from '../button/ImageButton.vue';
+import ggIcon from '@/assets/img/gg.png'
+import gitIcon from '@/assets/img/git.png'
+const form = ref({
+    email: "",
+    password: ""
+});
 const errors = ref({});
 
-watch(email, () => {
+watch(() => form.value.email, () => {
     errors.value.email = "";
 })
-watch(password, () => {
+watch(() => form.value.password, () => {
     errors.value.password = "";
 })
 const handleSubmit = () => {
 
-    const rs = validateLogin({
-        email: email.value,
-        password: password.value
-    });
-
-    errors.value.email = rs.email || "";
-    errors.value.password = rs.password || "";
+    const rs = validateLogin(form.value);
+    errors.value = rs;
 
     if (Object.keys(rs).length === 0) {
         alert("Sign in successfully!");
@@ -36,12 +35,11 @@ const handleSubmit = () => {
         <p class=" text-[#6B7280]">Sign in to continue to your workspace.</p>
 
         <div class="flex justify-between gap-2">
-            <button class="p-2.5 flex items-center border border-[#E5E7EB] rounded-[10px] border-double" type="button">
+            <!-- <button class="p-2.5 flex items-center border border-[#E5E7EB] rounded-[10px] border-double" type="button">
                 <img class="w-7.5 h-7.5" src="../../assets/img/gg.png" alt="" />Continue with Google
-            </button>
-            <button class="p-2.5 flex items-center border border-[#E5E7EB] rounded-[10px] border-double" type="button">
-                <img class="w-7.5 h-7.5" src="../../assets/img/git.png" alt="" />Continue with Github
-            </button>
+            </button> -->
+            <ImageButton type="button" text="Continue with Google" :icon="ggIcon" />
+            <ImageButton type="button" text="Continue with Github" :icon="gitIcon" />
         </div>
 
         <div class="flex items-center gap-4">
@@ -50,14 +48,15 @@ const handleSubmit = () => {
             <hr class="flex-1 border-t border-t-[#e5e7eb]" />
         </div>
 
-        <BaseInput v-model="email" label="Email:" type="email" placeholder="Enter your email" :error="errors.email" />
+        <BaseInput v-model="form.email" label="Email:" type="email" placeholder="Enter your email"
+            :error="errors.email" />
 
-        <BaseInput v-model="password" label="Password:" type="password" placeholder="Enter your password"
+        <BaseInput v-model="form.password" label="Password:" type="password" placeholder="Enter your password"
             :error="errors.password" />
 
         <div class="flex justify-between">
             <div>
-                <input v-model="remember" type="checkbox" />
+                <input type="checkbox" />
                 <label for="">Remember me</label>
             </div>
             <RouterLink to="/forgot-pass" class="no-underline text-[#5046E5]">Forgot password?</RouterLink>

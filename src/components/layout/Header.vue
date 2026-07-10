@@ -1,12 +1,19 @@
 <script setup>
 import { ref } from "vue";
-import { RouterLink, RouterView } from "vue-router";
+import { RouterLink } from "vue-router";
 
 const isOpen = ref(false);
 
 const toggleMenu = () => {
     isOpen.value = !isOpen.value;
 };
+const menus = [
+    { name: "1.Login", path: "/login" },
+    { name: "2.Register", path: "/register" },
+    { name: "3.Forgot password", path: "/forgot-pass" },
+    { name: "4.Reset password", path: "/reset-pass" },
+    { name: "5.Success", path: "/success" },
+];
 </script>
 <template>
     <header class="bg-[#ffffff] h-fit max-[760px]:absolute w-full">
@@ -14,39 +21,14 @@ const toggleMenu = () => {
             <i class="fa-solid fa-bars text-[#5046E5]"></i>
         </button>
 
-        <nav class="overflow-hidden transition-all duration-300
-         min-[761px]:block" :class="isOpen ? 'max-h-96' : 'max-[760px]:max-h-0'">
+        <nav class="overflow-hidden transition-all duration-500
+         min-[760px]:block max-[760px]:bg-[#5649ffe1]" :class="isOpen ? 'max-h-96' : 'max-[760px]:max-h-0'">
             <ul class="flex max-[760px]:flex-col">
 
-                <li class="p-0 list-none flex items-center justify-center">
-                    <RouterLink to="/login"
-                        class="p-2.5 no-underline text-[#6B7280] hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
-                        href="">1.
-                        Login</RouterLink>
-                </li>
-
-                <li class="p-0 list-none flex items-center justify-center">
-                    <RouterLink to="/register"
-                        class="p-2.5 no-underline text-[#6B7280]  hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
-                        href="">2. Register</RouterLink>
-                </li>
-
-                <li class="p-0 list-none flex items-center justify-center">
-                    <RouterLink to="/forgot-pass"
-                        class="p-2.5 no-underline text-[#6B7280] hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
-                        href="">3. Forgot password</RouterLink>
-                </li>
-
-                <li class="p-0 list-none flex items-center justify-center">
-                    <RouterLink to="/reset-pass"
-                        class="p-2.5 no-underline text-[#6B7280] hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
-                        href="">4. Reset password</RouterLink>
-                </li>
-
-                <li class="p-0 list-none flex items-center justify-center">
-                    <RouterLink to="/success"
-                        class="p-2.5 no-underline text-[#6B7280] hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl"
-                        href="">5. Success</RouterLink>
+                <li v-for="(menu) in menus" :key="menu.path" class="p-0 list-none flex items-center justify-center">
+                    <RouterLink :to="menu.path"
+                        class="p-2.5 no-underline text-[#6B7280] max-[760px]:text-[#ffffff] hover:bg-[#5046E5] hover:text-[#ffffff] hover: rounded-3xl">
+                        {{ menu.name }}</RouterLink>
                 </li>
             </ul>
         </nav>

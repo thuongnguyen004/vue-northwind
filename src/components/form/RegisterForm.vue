@@ -3,37 +3,28 @@ import { ref, watch } from 'vue';
 import { validateSignup } from '@/assets/js/validateSignup.js';
 import BaseInput from '../input/BaseInput.vue';
 import BaseButton from '../button/BaseButton.vue';
-const fullName = ref("");
-const email = ref("");
-const password = ref("");
-const confirmPassword = ref("");
-const errors = ref({});
+import ggIcon from '@/assets/img/gg.png'
+import gitIcon from '@/assets/img/git.png'
+import ImageButton from '../button/ImageButton.vue';
+const form = ref({
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+});
 
-watch(fullName, () => {
-    errors.value.fullName = "";
-})
-watch(email, () => {
-    errors.value.email = "";
-})
-watch(password, () => {
-    errors.value.password = "";
-})
-watch(confirmPassword, () => {
-    errors.value.confirmPassword = "";
-})
+const errors = ref({});
+const fields = ["fullName", "email", "password", "confirmPassword"];
+fields.forEach((field) => {
+    watch(() => form.value[field], () => {
+        errors.value[field] = "";
+    });
+});
+
 const handleSubmit = () => {
 
-    const rs = validateSignup({
-        fullName: fullName.value,
-        email: email.value,
-        password: password.value,
-        confirmPassword: confirmPassword.value,
-    });
-
-    errors.value.fullName = rs.fullName || "";
-    errors.value.email = rs.email || "";
-    errors.value.password = rs.password || "";
-    errors.value.confirmPassword = rs.confirmPassword || "";
+    const rs = validateSignup(form.value);
+    errors.value = rs;
 
     if (Object.keys(rs).length === 0) {
         alert("Sign up successfully!");
@@ -43,20 +34,12 @@ const handleSubmit = () => {
 </script>
 <template>
     <form class="max-w-75 flex flex-col gap-3.5" @submit.prevent="handleSubmit">
-        <h2 class="text-3xl leading-tight">Welcome back</h2>
-        <p class=" text-[#6B7280]">Sign in to continue to your workspace.</p>
+        <h2 class="text-3xl leading-tight">Create your account</h2>
+        <p class=" text-[#6B7280]">Start your 14-day free trial. No card required.</p>
 
         <div class="flex justify-between gap-2">
-            <button
-                class="p-2.5 w-1/2 flex gap-2 items-center justify-center border border-[#E5E7EB] rounded-[10px] border-double"
-                type="button">
-                <img class="w-7.5 h-7.5" src="../../assets/img/gg.png" alt="" />Google
-            </button>
-            <button
-                class="p-2.5 w-1/2 flex gap-2 items-center justify-center border border-[#E5E7EB] rounded-[10px] border-double"
-                type="button">
-                <img class="w-7.5 h-7.5" src="../../assets/img/git.png" alt="" />Github
-            </button>
+            <ImageButton type="button" text="Google" :icon="ggIcon" class="w-1/2 gap-2 justify-center" />
+            <ImageButton type="button" text="Github" :icon="gitIcon" class="w-1/2 gap-2 justify-center" />
         </div>
 
         <div class="flex items-center gap-4">
@@ -65,16 +48,17 @@ const handleSubmit = () => {
             <hr class="flex-1 border-t border-t-[#e5e7eb]" />
         </div>
 
-        <BaseInput v-model="fullName" label="FullName:" type="text" placeholder="Enter your fullname"
+        <BaseInput v-model="form.fullName" label="FullName:" type="text" placeholder="Enter your fullname"
             :error="errors.fullName" />
 
-        <BaseInput v-model="email" label="Email:" type="email" placeholder="Enter your email" :error="errors.email" />
+        <BaseInput v-model="form.email" label="Email:" type="email" placeholder="Enter your email"
+            :error="errors.email" />
 
-        <BaseInput v-model="password" label="Password:" type="password" placeholder="Enter your password"
+        <BaseInput v-model="form.password" label="Password:" type="password" placeholder="Enter your password"
             :error="errors.password" />
 
-        <BaseInput v-model="confirmPassword" label="Confirm Password:" type="password" placeholder="Enter your password"
-            :error="errors.confirmPassword" />
+        <BaseInput v-model="form.confirmPassword" label="Confirm Password:" type="password"
+            placeholder="Enter your password" :error="errors.confirmPassword" />
 
         <div class="flex text-center">
             <p>
