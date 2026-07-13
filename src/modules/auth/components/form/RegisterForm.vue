@@ -1,11 +1,12 @@
 <script setup>
 import { ref, watch } from 'vue';
-import { validateSignup } from '@/assets/js/validateSignup.js';
+
 import BaseInput from '../input/BaseInput.vue';
 import BaseButton from '../button/BaseButton.vue';
-import ggIcon from '@/assets/img/gg.png'
-import gitIcon from '@/assets/img/git.png'
+import ggIcon from '@/shared/assets/img/gg.png'
+import gitIcon from '@/shared/assets/img/git.png'
 import ImageButton from '../button/ImageButton.vue';
+import { validateSignup } from '@/shared/utils/validate/validateSignup.js';
 const form = ref({
     fullName: "",
     email: "",

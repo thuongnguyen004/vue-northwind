@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue';
 import BaseInput from '../input/BaseInput.vue';
 import BaseButton from '../button/BaseButton.vue';
-import { validateForgotPass } from '@/assets/js/validateForgotPass.js';
+import { validateForgotPass } from '@/shared/utils/validate/validateForgotPass.js';
 
 const form = ref({
     email: "",
@@ -26,7 +26,7 @@ const handleSubmit = () => {
 </script>
 <template>
     <form class="max-w-75 flex flex-col gap-3.5" @submit.prevent="handleSubmit">
-        <img class="w-12.5 h-12.5" src="../../assets/img/fg.png" alt="" />
+        <img class="w-12.5 h-12.5" src="@/shared/assets/img/fg.png" alt="" />
         <h2 class="text-3xl leading-tight">Forgot password?</h2>
 
         <p class=" text-[#6B7280]">

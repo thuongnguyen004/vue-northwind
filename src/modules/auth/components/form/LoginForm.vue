@@ -1,11 +1,12 @@
 <script setup>
 import { ref, watch } from 'vue';
-import { validateLogin } from '@/assets/js/validateLogin';
+
 import BaseInput from '../input/BaseInput.vue';
 import BaseButton from '../button/BaseButton.vue';
 import ImageButton from '../button/ImageButton.vue';
-import ggIcon from '@/assets/img/gg.png'
-import gitIcon from '@/assets/img/git.png'
+import ggIcon from '@/shared/assets/img/gg.png'
+import gitIcon from '@/shared/assets/img/git.png'
+import { validateLogin } from '@/shared/utils/validate/validateLogin.js';
 const form = ref({
     email: "",
     password: ""
@@ -36,7 +37,7 @@ const handleSubmit = () => {
 
         <div class="flex justify-between gap-2">
             <!-- <button class="p-2.5 flex items-center border border-[#E5E7EB] rounded-[10px] border-double" type="button">
-                <img class="w-7.5 h-7.5" src="../../assets/img/gg.png" alt="" />Continue with Google
+                <img class="w-7.5 h-7.5" src="../../shared/assets/img/gg.png" alt="" />Continue with Google
             </button> -->
             <ImageButton type="button" text="Continue with Google" :icon="ggIcon" />
             <ImageButton type="button" text="Continue with Github" :icon="gitIcon" />
