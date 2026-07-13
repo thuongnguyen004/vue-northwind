@@ -1,38 +1,7 @@
-<script setup>
-import { ref, watch } from 'vue';
-
-import BaseInput from '../input/BaseInput.vue';
-import BaseButton from '../button/BaseButton.vue';
-import ImageButton from '../button/ImageButton.vue';
-import ggIcon from '@/shared/assets/img/gg.png'
-import gitIcon from '@/shared/assets/img/git.png'
-import { validateLogin } from '@/shared/utils/validate/validateLogin.js';
-const form = ref({
-    email: "",
-    password: ""
-});
-const errors = ref({});
-
-watch(() => form.value.email, () => {
-    errors.value.email = "";
-})
-watch(() => form.value.password, () => {
-    errors.value.password = "";
-})
-const handleSubmit = () => {
-
-    const rs = validateLogin(form.value);
-    errors.value = rs;
-
-    if (Object.keys(rs).length === 0) {
-        alert("Sign in successfully!");
-    }
-
-};
-</script>
 <template>
     <form class="max-w-75 flex flex-col gap-3.5" @submit.prevent="handleSubmit">
-        <h2 class="text-3xl leading-tight">Welcome back</h2>
+        <h2 class="text-3xl font-medium leading-tight">Welcome back</h2>
+
         <p class=" text-[#6B7280]">Sign in to continue to your workspace.</p>
 
         <div class="flex justify-between gap-2">
@@ -73,3 +42,36 @@ const handleSubmit = () => {
         </div>
     </form>
 </template>
+
+<script setup>
+import { ref, watch } from 'vue';
+
+import BaseInput from '../input/BaseInput.vue';
+import BaseButton from '../button/BaseButton.vue';
+import ImageButton from '../button/ImageButton.vue';
+import ggIcon from '@/shared/assets/img/gg.png'
+import gitIcon from '@/shared/assets/img/git.png'
+import { validateLogin } from '@/shared/utils/validate/validateLogin.js';
+const form = ref({
+    email: "",
+    password: ""
+});
+const errors = ref({});
+
+watch(() => form.value.email, () => {
+    errors.value.email = "";
+})
+watch(() => form.value.password, () => {
+    errors.value.password = "";
+})
+const handleSubmit = () => {
+
+    const rs = validateLogin(form.value);
+    errors.value = rs;
+
+    if (Object.keys(rs).length === 0) {
+        alert("Sign in successfully!");
+    }
+
+};
+</script>

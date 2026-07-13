@@ -1,20 +1,3 @@
-<script setup>
-import { ref } from "vue";
-import { RouterLink } from "vue-router";
-
-const isOpen = ref(false);
-
-const toggleMenu = () => {
-    isOpen.value = !isOpen.value;
-};
-const menus = [
-    { name: "1.Login", path: "/login" },
-    { name: "2.Register", path: "/register" },
-    { name: "3.Forgot password", path: "/forgot-pass" },
-    { name: "4.Reset password", path: "/reset-pass" },
-    { name: "5.Success", path: "/success" },
-];
-</script>
 <template>
     <header class="bg-[#ffffff] h-fit max-[760px]:absolute w-full">
         <button @click="toggleMenu" class="hidden max-[760px]:block p-4">
@@ -22,7 +5,7 @@ const menus = [
         </button>
 
         <nav class="overflow-hidden transition-all duration-500
-         min-[760px]:block max-[760px]:bg-[#5649ffe1]" :class="isOpen ? 'max-h-96' : 'max-[760px]:max-h-0'">
+         min-[760px]:block max-[760px]:bg-[#5649ffe1]" :class="toggleOpen">
             <ul class="flex max-[760px]:flex-col">
 
                 <li v-for="(menu) in menus" :key="menu.path" class="p-0 list-none flex items-center justify-center">
@@ -34,3 +17,24 @@ const menus = [
         </nav>
     </header>
 </template>
+
+<script setup>
+import { computed, ref } from "vue";
+import { RouterLink } from "vue-router";
+
+const isOpen = ref(false);
+
+const toggleMenu = () => {
+    isOpen.value = !isOpen.value;
+};
+const toggleOpen = computed(() => {
+    return isOpen.value ? 'max-h-96' : 'max-[760px]:max-h-0'
+})
+const menus = [
+    { name: "1.Login", path: "/login" },
+    { name: "2.Register", path: "/register" },
+    { name: "3.Forgot password", path: "/forgot-pass" },
+    { name: "4.Reset password", path: "/reset-pass" },
+    { name: "5.Success", path: "/success" },
+];
+</script>

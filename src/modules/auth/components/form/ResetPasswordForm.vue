@@ -1,3 +1,27 @@
+<template>
+    <form class="max-w-75 flex flex-col gap-3.5" @submit.prevent="handleSubmit">
+        <img class="w-12.5 h-12.5" src="@/shared/assets/img/reset.png" alt="" />
+        <h2 class="text-3xl font-medium leading-tight">Set a new password</h2>
+        <p class=" text-[#6B7280]">
+            Choose a strong password you haven't used before. It must be at
+            least 8 characters.
+        </p>
+        <BaseInput v-model="form.password" label="Password:" type="password" placeholder="Enter your password"
+            :error="errors.password" />
+
+        <BaseInput v-model="form.confirmPassword" label="Confirm Password:" type="password"
+            placeholder="Enter your password" :error="errors.confirmPassword" />
+
+        <BaseButton type="submit" text="Update password" />
+
+        <div class="text-center">
+            <RouterLink to="/login" class="no-underline text-[#5046E5]">
+                <i class="fa-solid fa-arrow-left" style="color: #5046e5"></i>Back to sign in
+            </RouterLink>
+        </div>
+    </form>
+</template>
+
 <script setup>
 import { ref, watch } from 'vue';
 
@@ -29,26 +53,3 @@ const handleSubmit = () => {
 
 };
 </script>
-<template>
-    <form class="max-w-75 flex flex-col gap-3.5" @submit.prevent="handleSubmit">
-        <img class="w-12.5 h-12.5" src="@/shared/assets/img/reset.png" alt="" />
-        <h2 class="text-3xl leading-tight">Set a new password</h2>
-        <p class=" text-[#6B7280]">
-            Choose a strong password you haven't used before. It must be at
-            least 8 characters.
-        </p>
-        <BaseInput v-model="form.password" label="Password:" type="password" placeholder="Enter your password"
-            :error="errors.password" />
-
-        <BaseInput v-model="form.confirmPassword" label="Confirm Password:" type="password"
-            placeholder="Enter your password" :error="errors.confirmPassword" />
-
-        <BaseButton type="submit" text="Update password" />
-
-        <div class="text-center">
-            <RouterLink to="/login" class="no-underline text-[#5046E5]">
-                <i class="fa-solid fa-arrow-left" style="color: #5046e5"></i>Back to sign in
-            </RouterLink>
-        </div>
-    </form>
-</template>

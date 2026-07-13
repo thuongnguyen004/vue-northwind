@@ -25,10 +25,12 @@
                 <i class="fa-regular fa-circle-check" style="color: rgb(255, 255, 255, 0.6)"></i>
                 Encrypted credentials
             </li>
+
             <li class="flex items-center gap-3 text-white/60">
                 <i class="fa-regular fa-circle-check" style="color: rgb(255, 255, 255, 0.6)"></i>
                 Email verification built-in
             </li>
+
             <li class="flex items-center gap-3 text-white/60">
                 <i class="fa-regular fa-circle-check" style="color: rgb(255, 255, 255, 0.6)"></i>
                 Password recovery flow
